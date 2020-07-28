@@ -1,0 +1,182 @@
+-- phpMyAdmin SQL Dump
+-- version 4.9.1
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 03-07-2020 a las 12:36:47
+-- Versión del servidor: 10.4.8-MariaDB
+-- Versión de PHP: 7.3.11
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de datos: `projecte`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `clientes`
+--
+
+CREATE TABLE `clientes` (
+  `idClientes` int(11) NOT NULL,
+  `nombre` varchar(45) DEFAULT NULL,
+  `telefono` varchar(45) DEFAULT NULL,
+  `postal` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `empleados`
+--
+
+CREATE TABLE `empleados` (
+  `idEmpleados` int(11) NOT NULL,
+  `nombre` varchar(45) DEFAULT NULL,
+  `nivelEmpleado` varchar(45) DEFAULT NULL,
+  `tiendas_idTiendas` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `existencias`
+--
+
+CREATE TABLE `existencias` (
+  `productos_idProductos` int(11) NOT NULL,
+  `cantidadStock` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pedidos`
+--
+
+CREATE TABLE `pedidos` (
+  `idPedidos` int(11) NOT NULL,
+  `fecha` varchar(45) DEFAULT NULL,
+  `clientes_idClientes` int(11) NOT NULL,
+  `empleados_idEmpleados` int(11) NOT NULL,
+  `productos_idProductos` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `productos`
+--
+
+CREATE TABLE `productos` (
+  `idProductos` int(11) NOT NULL,
+  `nombre` varchar(45) DEFAULT NULL,
+  `precio` varchar(45) DEFAULT NULL,
+  `foto` varchar(45) DEFAULT NULL,
+  `descripcion` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tiendas`
+--
+
+CREATE TABLE `tiendas` (
+  `idTiendas` int(11) NOT NULL,
+  `nombre` varchar(45) DEFAULT NULL,
+  `ciudad` varchar(45) DEFAULT NULL,
+  `direccion` varchar(45) DEFAULT NULL,
+  `existencias_productos_idProductos` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `clientes`
+--
+ALTER TABLE `clientes`
+  ADD PRIMARY KEY (`idClientes`);
+
+--
+-- Indices de la tabla `empleados`
+--
+ALTER TABLE `empleados`
+  ADD PRIMARY KEY (`idEmpleados`),
+  ADD KEY `fk_empleados_tiendas1_idx` (`tiendas_idTiendas`);
+
+--
+-- Indices de la tabla `existencias`
+--
+ALTER TABLE `existencias`
+  ADD PRIMARY KEY (`productos_idProductos`);
+
+--
+-- Indices de la tabla `pedidos`
+--
+ALTER TABLE `pedidos`
+  ADD PRIMARY KEY (`idPedidos`),
+  ADD KEY `fk_pedidos_clientes1_idx` (`clientes_idClientes`),
+  ADD KEY `fk_pedidos_empleados1_idx` (`empleados_idEmpleados`),
+  ADD KEY `fk_pedidos_productos1_idx` (`productos_idProductos`);
+
+--
+-- Indices de la tabla `productos`
+--
+ALTER TABLE `productos`
+  ADD PRIMARY KEY (`idProductos`);
+
+--
+-- Indices de la tabla `tiendas`
+--
+ALTER TABLE `tiendas`
+  ADD PRIMARY KEY (`idTiendas`),
+  ADD KEY `fk_tiendas_existencias1_idx` (`existencias_productos_idProductos`);
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `empleados`
+--
+ALTER TABLE `empleados`
+  ADD CONSTRAINT `fk_empleados_tiendas1` FOREIGN KEY (`tiendas_idTiendas`) REFERENCES `tiendas` (`idTiendas`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `existencias`
+--
+ALTER TABLE `existencias`
+  ADD CONSTRAINT `fk_existencias_productos` FOREIGN KEY (`productos_idProductos`) REFERENCES `productos` (`idProductos`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `pedidos`
+--
+ALTER TABLE `pedidos`
+  ADD CONSTRAINT `fk_pedidos_clientes1` FOREIGN KEY (`clientes_idClientes`) REFERENCES `clientes` (`idClientes`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_pedidos_empleados1` FOREIGN KEY (`empleados_idEmpleados`) REFERENCES `empleados` (`idEmpleados`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_pedidos_productos1` FOREIGN KEY (`productos_idProductos`) REFERENCES `productos` (`idProductos`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `tiendas`
+--
+ALTER TABLE `tiendas`
+  ADD CONSTRAINT `fk_tiendas_existencias1` FOREIGN KEY (`existencias_productos_idProductos`) REFERENCES `existencias` (`productos_idProductos`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

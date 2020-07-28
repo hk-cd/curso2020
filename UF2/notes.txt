@@ -1,0 +1,9 @@
+- El projecte crea i envia informació a les dues taules de la base de dades (usuaris i noticies).
+
+- El projecte comprova amb èxit els usuaris contra la bbdd per fer login.
+
+- Per algun motiu no envia correctament el mail a l'escola, pero a casa si que m'ha funcionat.
+
+- No he aconseguit que mostri correctament les dades de la taula de notícies, i per aquest motiu no he pogut comprovar si les dades s'esborren correctament.
+
+- El pdf amb les dades (vuit) es genera correctament.

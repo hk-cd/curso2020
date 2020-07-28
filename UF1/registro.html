@@ -1,0 +1,70 @@
+<div id="contenedor">
+		<form method="GET" action="#" name="formulario" id="registro" onsubmit="return validar()">
+		<fieldset>
+			<legend>Formulario de Registro</legend>
+			<div>
+				Nombre *<input type="text" name="nombre" id="named" onkeyup="nombre()">
+				<p id="errorname" class="to_hide">Por favor introduce tu nombre</p>
+			</div>
+			<div>
+				Apellidos *<input type="text" name="apellidos" id="lastname" onkeyup="apellido()">
+				<p id="errorlastname" class="to_hide">Por favor introduce tu apellido</p>
+			</div>
+			<div>
+				Dirección   <input type="text" name="direccion">
+			</div>
+			<div>
+				Teléfono * <input type="text" name="telefono" id="tphone" onkeyup="telefono()">
+				<p id="errorphone" class="to_hide">Por favor introduce tu teléfono</p>
+			</div>
+			<div>
+				Fecha de nacimiento * <input type="date" name="fechanacimiento" id="bdate" onkeyup="fechanac()">
+				<p id="errordate" class="to_hide">Por favor introduce tu fecha de nacimiento</p>
+			</div>
+			<div>
+				Género <input type="radio" name="sexo" value="Hombre" id="male" onchange="genero()">Hombre
+				<input type="radio" name="sexo" value="Mujer" id="female" onchange="genero()">Mujer 
+				<p id="errorgender" class="to_hide">Por favor escoge una opción</p>
+			</div>
+		</fieldset>
+		<fieldset>
+			<legend>Información laboral</legend>
+			<div>
+				Profesión <select name="profesiones">
+						<option>--</option>
+						<option>Guerrero</option>
+						<option>Pícaro</option>
+						<option>Mago</option>
+						<option>Bárbaro</option>
+						<option>Noble</option>
+						</select>
+			</div>
+			<div>
+				Dirección <input type="text" name="direcciontrabajo">
+			</div>
+			<div>
+				Teléfono <input type="number" name="telefonotrabajo">
+			</div>
+		</fieldset>
+		<fieldset>
+			<legend>Informació de registro</legend>
+			<div>
+				Email <input type="mail" name="email" id="correo" onkeyup="vmail()">
+				<p id="errormail" class="to_hide">Por favor introduce tu mail</p>
+			</div>
+			<div>
+				Contraseña <input type="password" name="contraseña" id="pword" onkeyup="vpassword()">
+				<p id="errorpword" class="to_hide">Por favor introduce tu contraseña</p>
+			</div>
+		</fieldset>
+		<div>
+			<p><strong>Protección de datos de carácter personal</strong></p>
+			<p>En cumplimiento con lo establecido en la Ley Orgánica 15/1999, de 13 de diciembre, sobre protección de datos de carácter personal, le informamos que sus datos personales recogidos por medio de los formularios de este web serán tratados de forma confidencial y quedarán incorporados a los archivos de la Universidad Politécnica de Catalunya parra llevar a cabo una gestión correcta y responder a las consultas o sugerencias que propone en los formularios. De la misma manera, le informamos de que puede ejercer los derechos de acceso, rectificación, cancelación, de sorpresa y oposición ante el Servicio de Comunicación y Promoción, calle Jordi Girona, 31, Barcelona 08034, o a la dirección electrónica: <a href="">info@cdsarti.org</a>. Toss a coin to your Witcher, O'Valley of plenty, O'valley of plenty, Oooh.</p>
+			<input type="checkbox" name="condiciones" value="condiciones" id="conditions" onchange="condiciones()">Acepto las condiciones del servicio, y lanzo una moneda al Witcher.
+			<p id="errorbox" class="to_hide">Campo obligatorio</p>
+		</div>
+		<div class="validar">
+			<input type="submit" name="envio" value="Registrar">
+		</div>
+	</form>
+</div>

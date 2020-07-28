@@ -1,0 +1,139 @@
+
+/*FUENTES DE LA PÁGINA*/
+@font-face {
+	font-family: "lucky-guy";
+	src: url("../fonts/luckiestguy/LuckiestGuy-Regular.ttf"),url("../fonts/luckiestguy/LuckiestGuy-Regular.woff2");
+  
+}
+/*ESTILO ESTÁNDAR*/
+
+body{
+  background-color: transparent;
+	background-image: url(../imagenes/fondo.jpg);
+	background-repeat: no-repeat;
+	height: 100%;
+	margin-left: 150px;
+  margin-right: 100px;
+}
+
+/*ESTILO DEL TÍTULO*/
+#titulo {
+	font-family: "lucky-guy";
+	font-size: 350%;
+	padding-left: 25px;
+}
+
+/*ESTILO BARRA NAVEGACIÓN*/
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+li {
+  float: left;
+}
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+li a:hover {
+  background-color: #111;
+}
+
+
+/*ESTILO CONTENIDO*/
+.bienvenida{
+  padding: 25px 25px 25px 15px;
+}
+
+
+/*ESTILO FOOTER*/
+footer {
+  clear: both;
+	min-height: 100%;
+	margin-bottom: -50px;
+    background-color: #AECFC9;
+    color: white;
+    padding: 10px 0px 10px 35px;
+    font-size: 80%;
+    font-weight: bolder;
+    color: black;
+}
+
+
+/*ESTILO PAGINA CONTENIDO*/
+
+.entradas {
+  width: 80%;
+  float: left;
+}
+
+.lateral {
+  width: 20%;
+  float: left;
+}
+
+.lateral ul{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    list-style: none;
+  
+}
+
+.lateral li{
+    width: 100%;
+    padding-top: 50%;
+}
+
+.lateral a{
+    display: block;
+    font-size: 0.5em;
+}
+
+
+/*ESTILOS ENTRADAS BLOG*/
+
+.blog {
+  margin-left: 10px;
+}
+
+
+/*ESTILO FORM*/
+
+.to_hide {display: none;
+          color: red;
+          font-weight: bold;}
+
+input {
+  margin-top: 10px;
+  margin-left: 5%;
+}
+
+fieldset div:hover {
+  color: blue;
+  font-weight: bolder;
+}
+
+
+
+
+/*ESTILO GALERIA*/
+
+.granimagen {
+  width: 80%;
+  height: auto;
+  display: block;
+}
+
+.smallimg {
+  width: 150px;
+  height: auto;
+  display: inline;
+}
